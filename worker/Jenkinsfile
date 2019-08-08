@@ -58,9 +58,10 @@ pipeline{
             }
         }
     }
-    post{
-        always{
-            echo 'the job is complete'
+        post{
+            always{
+                echo 'the job is complete'
+            }
         }
     }
 }

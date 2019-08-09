@@ -13,9 +13,9 @@ pipeline{
             }
             steps{
                 echo "Building worker app..."
+                sh 'mvn compile -f worker/pom.xml'
                 dir("worker"){
-                  echo "Hello world"
-                  sh "env"
+                  echo "Hello"
                   sh 'mvn compile'
                 }
             }

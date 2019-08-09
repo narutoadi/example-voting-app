@@ -12,9 +12,7 @@ pipeline{
                  }
             }
 
-            when{
-              changeset "**/worker/**"
-            }
+            
             steps{
                 echo "Building worker app..."
                 dir("worker"){

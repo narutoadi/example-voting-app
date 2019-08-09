@@ -11,11 +11,11 @@ pipeline{
                    args '-v m2cache:/root/.m2'
                  }
             }
-
-            
             steps{
                 echo "Building worker app..."
                 dir("worker"){
+                  echo "Hello world"
+                  sh "env"
                   sh 'mvn compile'
                 }
             }

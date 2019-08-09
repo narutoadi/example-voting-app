@@ -14,10 +14,7 @@ pipeline{
             steps{
                 echo "Building worker app..."
                 sh 'mvn compile -f worker/pom.xml'
-                dir("worker"){
-                  echo "Hello"
-                  sh('mvn compile')
-                }
+                
             }
         }
         stage("test"){
@@ -32,9 +29,7 @@ pipeline{
             }
             steps{
                 echo "Testing worker app..."
-                dir("worker"){
-                  sh 'mvn clean test'
-                }
+                sh 'mvn clean test -f worker/pom.xml'
             }
         }
          stage("package"){
@@ -50,10 +45,9 @@ pipeline{
             }
             steps{
                 echo "Packaging worker app..."
-                dir("worker"){
-                  sh 'mvn package -DskipTests'
-                  archiveArtifacts artifacts: '**/target/*.jar'
-                }
+                sh 'mvn package -f worker/pom.xml -DskipTests'
+                archiveArtifacts artifacts: '**/target/*.jar'
+                
             }
         }
 
